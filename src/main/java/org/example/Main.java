@@ -1,7 +1,5 @@
 package org.example;
 
-import array.CopyArray;
-
 import static array.CopyArray.copyArray;
 
 public class Main {
