@@ -1,45 +1,37 @@
 package array;
 
-import  java.util.Arrays;
+import java.util.Arrays;
 import java.util.random.RandomGenerator;
 
 public class FillArray {
 
-    static RandomGenerator random =   RandomGenerator.getDefault();
-
-
-
-    /**
-     *
-     * @param size -> double  dimensione array
-     * @param value -> double da insierire nell array
-     * @param addNoise -> boolean disturbo attivo o meno
-     *
-     *
-     * */
     public static double[] fillArray(int size, double value, boolean addNoise){
 
-        double[] arr = new  double[size];
-        Arrays.fill(arr,value);
-        double tail = value + value * 0.05;
-        double head = value - value * 0.05;
+        double[] dest = new double[size];
+        java.util.Arrays.fill(dest,value);
+
         if(addNoise){
-            System.out.println("sono nel if");
-            for(int i = 0; i < size; i++){
-                arr[i] = random.nextDouble(head,tail);
+            RandomGenerator rnd = RandomGenerator.getDefault();
+
+            for(int i = 0; i < dest.length; i++){
+                if(value > 0){
+                    dest[i] += rnd.nextDouble(-value,value)*0.05;
+                }else dest[i] += rnd.nextDouble(value,-value)*0.05;
+
             }
+
         }
 
-        return arr;
-
+        return  dest;
     }
-
-
 
 
     public static void main(String[] args) {
-        System.out.println(Arrays.toString(fillArray(5, 1, true)));
-    }
 
+        System.out.println(Arrays.toString(fillArray(5, 5, false)) + "\n");
+        System.out.println(Arrays.toString(fillArray(5, 5, true)) + "\n");
+        System.out.println(Arrays.toString(fillArray(5, -1, false)) + "\n");
+        System.out.println(Arrays.toString(fillArray(5, -1, true)) + "\n");
+    }
 
 }
