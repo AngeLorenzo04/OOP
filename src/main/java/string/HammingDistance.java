@@ -24,7 +24,6 @@ public class HammingDistance {
 
     public static void main(String[] args) {
 
-
         System.out.println("hammingDistance(\"nicola\", \"n1cola\") → " + Integer.toString(hammingDistance("nicola","n1cola")));
         System.out.println("ammingDistance(\"nicola\", \"nicola\") → " + Integer.toString(hammingDistance("nicola","nicola")));
         System.out.println("hammingDistance(\"nicola\", \"zzzzzz\") → " + Integer.toString(hammingDistance("nicola","zzzzzz")));
