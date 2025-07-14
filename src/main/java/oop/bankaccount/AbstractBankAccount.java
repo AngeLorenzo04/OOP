@@ -1,6 +1,6 @@
 package oop.bankaccount;
 
-public class AbstractBankAccount implements BankAccount {
+public abstract class AbstractBankAccount implements BankAccount {
     protected String IBAN;
     protected double balance;
     protected double operationFee;
