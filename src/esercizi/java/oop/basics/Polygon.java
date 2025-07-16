@@ -63,4 +63,7 @@ public class Polygon {
 
     }
 
+    public int getVerticesCount() {
+        return 0;
+    }
 }
