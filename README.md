@@ -11,7 +11,7 @@ The project is structured to organize different types of exercises and related c
 ├── src/                   # Source code
 │   ├── main/              # Main application source code
 │   │   └── java/          # Java source files
-│   │       ├── array/     # Exercises related to arrays
+│   │       ├── arrays/     # Exercises related to arrays
 │   │       ├── oop/       # Core OOP concepts and exercises
 │   │       ├── org/       # (Potentially for organizational packages or specific problems)
 │   │       ├── string/    # Exercises involving string manipulation
@@ -40,7 +40,7 @@ To use or explore this repository:
     ```
     (Replace `YOUR_USERNAME` with your actual GitHub username if you've hosted it there.)
 2.  **Open in IntelliJ IDEA:** This project is set up as a Maven project, making it easy to import and work with in IntelliJ IDEA.
-3.  **Explore the `src/main/java` directory:** Navigate through the packages (`array`, `oop`, `string`, `warmup`) to find specific exercise implementations.
+3.  **Explore the `src/main/java` directory:** Navigate through the packages (`arrays`, `oop`, `string`, `warmup`) to find specific exercise implementations.
 4.  **Run tests (if available):** If there are corresponding test files in `src/test/java`, you can run them to verify the correctness of the solutions.
 
 ## Contributing (Self-Contribution/Notes)
