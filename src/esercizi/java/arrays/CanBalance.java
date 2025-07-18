@@ -5,8 +5,6 @@ public class CanBalance {
 
     public static boolean canBalance(int[] v){
 
-
-        boolean valid = false;
         int total = 0;
         for (int j : v) {
             total += j;
