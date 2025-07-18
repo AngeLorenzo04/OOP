@@ -8,19 +8,19 @@ public class CanBalance {
 
         boolean valid = false;
         int total = 0;
-        for( int i = 0; i < v.length; i++){
-            total += v[i];
+        for (int j : v) {
+            total += j;
         }
 
         int partial = 0;
-        for(int i = 0; i < v.length; i++){
+        for (int j : v) {
 
-            if(partial == total){
+            if (partial == total) {
                 return true;
             }
 
-            partial += v[i];
-            total -= v[i];
+            partial += j;
+            total -= j;
 
         }
 
