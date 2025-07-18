@@ -1,7 +1,5 @@
 package threads;
 
-import array.TenRun;
-
 import java.util.concurrent.TimeUnit;
 
 public class StartStop extends  Thread{
