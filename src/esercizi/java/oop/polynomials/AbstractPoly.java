@@ -2,8 +2,13 @@ package oop.polynomials;
 
 import java.util.Objects;
 
-public abstract class AbstractPoly implements Poly{
-
+/**
+ * An abstract class providing an implementation for shared parts of ArrayPoly
+ * and ListPoly
+ *
+ * @author Nicola Bicocchi
+ */
+public abstract class AbstractPoly implements Poly {
     protected double[] derive() {
         double[] tmp = new double[Math.max(1, degree())];
         for (int i = 1; i <= degree(); i++) {
@@ -45,5 +50,4 @@ public abstract class AbstractPoly implements Poly{
         sb.append(coefficient(degree())).append("x^").append(degree());
         return sb.toString();
     }
-
 }

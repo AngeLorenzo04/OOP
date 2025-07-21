@@ -2,17 +2,17 @@ package oop.polynomials;
 
 import java.util.Arrays;
 
-public class ArrayPoly extends AbstractPoly{
+public class ArrayPoly extends AbstractPoly {
 
-    private double[] coefficients;
+    final double[] coefficients;
 
     public ArrayPoly(double[] coefficients){
         this.coefficients = coefficients;
     }
 
     @Override
-    public double coefficient(int index) {
-        return coefficients[index];
+    public double coefficient(int i) {
+        return coefficients[i];
     }
 
     @Override
