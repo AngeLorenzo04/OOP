@@ -2,49 +2,46 @@ package oop.library;
 
 import java.util.Objects;
 
-public class Dvd extends Item{
+public class Dvd extends Item {
 
-    private int lenght;
+    private int length;
 
-    protected Dvd(String title, int year, int lenght) {
+    protected Dvd(String title, int year, int length) {
         super(title, year);
-        this.lenght = lenght;
+        this.length = length;
     }
 
-    public int getLenght() {
-        return lenght;
+    public int getLength() {
+        return length;
     }
 
-    public void setLenght(int lenght) {
-        this.lenght = lenght;
+    public void setLength(int length) {
+        this.length = length;
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if(obj == this){
+    public boolean equals(Object o){
+        if( o == this){
             return true;
         }
-        if(!(obj instanceof Item)){
-            return false;
-        }
-        if(obj.getClass() != getClass()){
+
+        if(o.getClass() != getClass()){
             return false;
         }
 
         return (
-                ((Dvd) obj).lenght == this.lenght
-                        && Objects.equals(((Dvd) obj).title, this.title)
-                        && ((Dvd) obj).year == this.year
+            ((Dvd)o).length == length &&
+            ((Dvd)o).year == year &&
+            Objects.equals(((Dvd) o).title, title)
         );
     }
 
     @Override
-    public int hashCode() {
-        return Objects.hash(title,year,lenght);
+    public int hashCode(){
+        return Objects.hash(title,year,length);
     }
-
     @Override
     public String toString() {
-        return "Titolo: " + title + " Anno: " + year + " Durata: " + lenght;
+        return "Dvd{" + "length=" + length + ", title='" + title + '\'' + ", year=" + year + '}';
     }
 }

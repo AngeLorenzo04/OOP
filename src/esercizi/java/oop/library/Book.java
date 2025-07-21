@@ -2,11 +2,11 @@ package oop.library;
 
 import java.util.Objects;
 
-public class Book extends Item {
+public class Book extends Item{
 
-    public int pages;
+    private int pages;
 
-    protected Book(String title, int year, int pages) {
+    public Book(String title, int year, int pages) {
         super(title, year);
         this.pages = pages;
     }
@@ -20,34 +20,29 @@ public class Book extends Item {
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if(obj == this){
+    public boolean equals(Object o){
+        if(o == this){
             return true;
         }
-        if(!(obj instanceof Item)){
-            return false;
-        }
-        if(obj.getClass() != getClass()){
+        if(o.getClass() != getClass()){
             return false;
         }
 
         return (
-                ((Book) obj).pages == this.pages
-                && Objects.equals(((Book) obj).title, this.title)
-                && ((Book) obj).year == this.year
+                Objects.equals(((Book) o).title, this.title) &&
+                ((Book) o).year == this.year &&
+                ((Book) o).pages == this.pages
         );
-
     }
 
     @Override
-    public int hashCode() {
-        return Objects.hash(title,year,pages);
+    public int hashCode(){
+        return Objects.hash(year,title,pages);
     }
-
 
     @Override
     public String toString() {
-        return "Titolo: " + title + " Anno: " + year + " Pagine: " + pages;
+        return "Book{" + "pages=" + pages + ", title='" + title + '\'' + ", year=" + year + '}';
     }
 
 }

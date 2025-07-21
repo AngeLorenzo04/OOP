@@ -3,12 +3,14 @@ package oop.library;
 public abstract class Item {
 
     protected String title;
-
     protected int year;
-
     protected Item(String title, int year){
         this.title = title;
         this.year = year;
+    }
+
+    public int getYear() {
+        return year;
     }
 
     public String getTitle() {
@@ -19,12 +21,7 @@ public abstract class Item {
         this.title = title;
     }
 
-    public int getYear() {
-        return year;
-    }
-
     public void setYear(int year) {
         this.year = year;
     }
-
 }

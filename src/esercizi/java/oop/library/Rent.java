@@ -7,50 +7,50 @@ public class Rent {
 
     private Item item;
     private Person person;
-    private LocalDate begin;
+    private LocalDate start;
     private LocalDate end;
 
-    public Rent(Item item, Person person, LocalDate begin, LocalDate end){
+    public Rent(Item item, Person person, LocalDate start, LocalDate end){
         this.item = item;
         this.person = person;
-        this.begin = begin;
+        this.start = start;
         this.end = end;
-    }
-
-    public void setItem(Item item) {
-        this.item = item;
-    }
-
-    public void setPerson(Person person) {
-        this.person = person;
-    }
-
-    public void setBegin(LocalDate begin) {
-        this.begin = begin;
-    }
-
-    public void setEnd(LocalDate end) {
-        this.end = end;
-    }
-
-    public Item getItem() {
-        return item;
     }
 
     public Person getPerson() {
         return person;
     }
 
-    public LocalDate getBegin() {
-        return begin;
+    public Item getItem() {
+        return item;
+    }
+
+    public LocalDate getStart() {
+        return start;
     }
 
     public LocalDate getEnd() {
         return end;
     }
 
+    public void setItem(Item item) {
+        this.item = item;
+    }
+
+    public void setEnd(LocalDate end) {
+        this.end = end;
+    }
+
+    public void setStart(LocalDate start) {
+        this.start = start;
+    }
+
+    public void setPerson(Person person) {
+        this.person = person;
+    }
+
     public boolean isExpired(LocalDate now){
-        return now.isAfter(end);
+        return end.isBefore(now);
     }
 
     @Override
@@ -58,27 +58,31 @@ public class Rent {
         if(obj == this){
             return true;
         }
+
         if(obj.getClass() != getClass()){
             return false;
         }
 
         return (
-            ((Rent)obj).begin == this.begin &&
-            ((Rent)obj).item == this.item &&
-            ((Rent)obj).person == this.person &&
-            ((Rent)obj).end == this.end
+
+                ((Rent)obj).person.equals(this.person) &&
+                ((Rent)obj).end.equals(this.end) &&
+                ((Rent)obj).start.equals(this.start) &&
+                ((Rent)obj).item.equals(this.item)
+
         );
+
     }
 
 
     @Override
     public int hashCode() {
-        return Objects.hash(begin,end,item,person);
+        return Objects.hash(person,item,start,end);
     }
+
 
     @Override
     public String toString() {
-        return "Inizio: " + begin + " Fine: " + end + " Id Utente: " + person.getId() + " Item: " + item.getTitle();
+        return "Rent{" + "item=" + item + ", person=" + person + ", begin=" + start + ", end=" + end + '}';
     }
 }
-

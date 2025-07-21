@@ -5,28 +5,32 @@ import java.util.ArrayList;
 
 public class Library {
 
-    private ArrayList<Rent> rents;
-
+    ArrayList<Rent> rents;
     public Library(){
         rents = new ArrayList<>();
     }
 
-    public boolean addRent(Rent rent){
-        return rents.add(rent);
+    public boolean addRent(Rent r){
+        if(rents.contains(r)) return false;
+        rents.add(r);
+        return true;
     }
 
-    public boolean removeRent(Rent rent){
-        return rents.remove(rent);
+    public boolean removeRent(Rent r){
+       if(!rents.contains(r)) return false;
+       rents.remove(r);
+       return true;
     }
 
-    public ArrayList<Rent> getExprired(LocalDate now){
-        ArrayList<Rent> out = new ArrayList<>();
+
+    public ArrayList<Rent> getExpired(LocalDate now){
+        ArrayList<Rent> expired = new ArrayList<>();
         for(Rent rent : rents){
-            if(rent.isExpired(now)){
-                out.add(rent);
+            if(rent.getEnd().isBefore(now)){
+                expired.add(rent);
             }
         }
-        return out;
+        return expired;
     }
 
 }

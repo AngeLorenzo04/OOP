@@ -2,64 +2,65 @@ package oop.library;
 
 import java.util.Objects;
 
-public class Person{
+public class Person {
 
     private String id;
-    private String surname;
-    private String name;
+    private String lastname;
+    private  String name;
 
-    public Person(String id, String surname, String name){
+    public Person(String id, String  lastname, String name){
         this.id = id;
+        this.lastname = lastname;
         this.name = name;
-        this.surname = surname;
     }
 
     public String getId() {
         return id;
     }
 
-    public String getSurname() {
-        return surname;
-    }
-
     public String getName() {
         return name;
     }
-
-    public void setId(String id) {
-        this.id = id;
+    public String getLastname() {
+        return lastname;
     }
 
-    public void setSurname(String surname) {
-        this.surname = surname;
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
+    public void setId(String id) {
+        this.id = id;
+    }
+
     @Override
-    public boolean equals(Object obj) {
-        if(obj == this){
+    public boolean equals(Object o){
+        if(this == o){
             return true;
         }
-        if(obj.getClass() != getClass()){
+        if(getClass() != o.getClass()){
             return false;
         }
+
         return (
-                Objects.equals(((Person) obj).surname, this.surname) &&
-                Objects.equals(((Person) obj).id, this.id) &&
-                Objects.equals(((Person) obj).name, this.name)
+            Objects.equals(this.name, ((Person) o).name) &&
+            Objects.equals(this.id, ((Person) o).id) &&
+            Objects.equals(this.lastname, ((Person) o).lastname)
         );
     }
 
     @Override
-    public int hashCode() {
-        return Objects.hash(surname,name,id);
+    public int hashCode(){
+        return Objects.hash(name,lastname,id);
     }
 
     @Override
     public String toString() {
-        return "Nome: " + name + " Cognome: " + surname + " id: " + id;
+        return "Person{" + "name='" + name + '\'' + ", lastname='" + lastname + '\'' + ", id='" + id + '\'' + '}';
     }
+
 }
