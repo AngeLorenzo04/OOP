@@ -1,11 +1,12 @@
 package oop.reverse;
 
-public class ReverserSlow {
-    public String Reverser(String str){
-        StringBuilder out = new StringBuilder();
-        for(int i = str.length() - 1; i > 0 ; i--){
-            out.append(str.charAt(i));
+public class ReverserSlow implements Reverser{
+    @Override
+    public String reverse(String s) {
+        char[] chars = new char[s.length()];
+        for(int i = 0; i < s.length() ; i++){
+            chars[s.length() - i - 1] = s.charAt(i);
         }
-        return out.toString();
+        return String.valueOf(chars);
     }
 }
