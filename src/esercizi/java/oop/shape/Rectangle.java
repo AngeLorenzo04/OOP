@@ -1,35 +1,35 @@
 package oop.shape;
 
 import java.awt.*;
+import java.awt.geom.Point2D;
 
 public class Rectangle extends AbstractShape{
+
 
     private Point upperLeft;
     private Point bottomRight;
 
-    protected Rectangle(String id, String color) {
+
+    protected Rectangle(String id, String color,Point upperLeft, Point bottomRight) {
         super(id, color);
+        this.bottomRight = bottomRight;
+        this.upperLeft = upperLeft;
     }
 
     @Override
     public double getArea() {
-        double lenLato1 = upperLeft.getY() + bottomRight.getY();
-        double lenLato2 = upperLeft.getX() + bottomRight.getX();
-
-        return lenLato1 * lenLato2;
+        return (bottomRight.getX() - upperLeft.getX()) * (upperLeft.getY() - bottomRight.getY());
     }
 
     @Override
     public double getPerimeter() {
-        double lenLato1 = upperLeft.getY() + bottomRight.getY();
-        double lenLato2 = upperLeft.getX() + bottomRight.getX();
-        return (lenLato1+lenLato2) * 2;
+        return ((bottomRight.getX() - upperLeft.getX()) + (upperLeft.getY() - bottomRight.getY())) * 2.0;
     }
 
     @Override
     public void move(Point p) {
-        upperLeft.translate(p.x,p.y);
-        bottomRight.translate(p.x,p.y);
+        upperLeft = new Point((int)(upperLeft.getX() + p.getX()), (int)(upperLeft.getY() + p.getY()));
+        bottomRight = new Point((int)(bottomRight.getX() + p.getX()), (int)(bottomRight.getY() + p.getY()));
     }
 
     @Override
@@ -39,10 +39,34 @@ public class Rectangle extends AbstractShape{
         bottomRight.setLocation(newX, newY);
     }
 
+    public Point getBottomRight() {
+        return bottomRight;
+    }
+
+    public void setUpperLeft(Point upperLeft) {
+        this.upperLeft = upperLeft;
+    }
+
+    public Point getUpperLeft() {
+        return upperLeft;
+    }
+
+    public void setBottomRight(Point bottomRight) {
+        this.bottomRight = bottomRight;
+    }
+
     @Override
     public String toString() {
         return "Rectangle{" + "upperLeft=" + upperLeft + ", bottomRight=" + bottomRight + ", id='" + id + '\'' + ", color=" + color + '}';
     }
-
-
 }
+
+/**
+ *
+ *
+ *  *-----------I
+ *  I           I
+ *  I           I
+ *  I___________*
+ *
+ */

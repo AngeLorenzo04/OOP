@@ -1,6 +1,6 @@
 package oop.shape;
 
 public interface Computable {
-    double getArea();
-    double getPerimeter();
+    public double getArea();
+    public double getPerimeter();
 }

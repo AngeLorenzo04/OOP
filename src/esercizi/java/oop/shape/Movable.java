@@ -3,5 +3,6 @@ package oop.shape;
 import java.awt.*;
 
 public interface Movable {
-    void move(Point p);
+    public void move(Point p);
 }
+
