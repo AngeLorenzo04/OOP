@@ -11,11 +11,14 @@ public class MapToPairs {
         List<Pair<K,V>> out = new ArrayList<>();
 
         for(Map.Entry<K,V> entry : src.entrySet()){
-            Pair<K,V> e = new Pair<K,V>(entry.getKey(),  entry.getValue());
-            out.add(e);
+
+            out.add(new Pair<K,V>(entry.getKey(),entry.getValue()));
+
         }
 
         return out;
+
+
 
     }
 
