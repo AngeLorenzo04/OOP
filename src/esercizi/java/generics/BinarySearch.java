@@ -1,44 +1,33 @@
 package generics;
 
-import java.util.TreeMap;
-import java.util.TreeSet;
+import java.lang.reflect.Array;
+import java.util.Arrays;
 
 public class BinarySearch {
 
     public static <T extends Comparable<T>> int find(T[] array, T key){
 
-//        TreeMap<T,Integer> treeMap = new TreeMap<>();
-//        int i = 0;
-//        for(T t : array){
-//            treeMap.put(t,i++);
+        int find = Arrays.binarySearch(array, key);
+        if(find >= 0) return find;
+        return -1;
+
+    }
+
+//    private static <T extends Comparable<T>> int search(T[] array, T key, int left, int right) {
+//        if (right < left) {
+//            return -1; // this means that the key not found
 //        }
+//        // find median
+//        int median = (left + right) >>> 1;
+//        int comp = key.compareTo(array[median]);
 //
-//
-//        return treeMap.getOrDefault(key,-1);
-
-
-        return binarysearch(array,key,array.length - 1,0);
-
-    }
-
-    public static <T extends Comparable<T>> int binarysearch(T[] array, T key, int destra, int sinistra){
-        if(destra < sinistra){
-            return -1;
-        }
-
-        int centro = (destra + sinistra) >>> 1;
-        int dif = key.compareTo(array[centro]);
-
-        if(dif == 0){
-            return centro;
-        }
-
-        if(dif > 0){
-           return binarysearch(array,key,centro - 1, sinistra);
-        }
-        return binarysearch(array,key,destra,centro + 1);
-
-    }
-
+//        if (comp == 0) {
+//            return median;
+//        } else if (comp < 0) {
+//            return search(array, key, left, median - 1);
+//        } else {
+//            return search(array, key, median + 1, right);
+//        }
+//    }
 
 }
