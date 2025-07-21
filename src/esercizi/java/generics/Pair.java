@@ -2,8 +2,8 @@ package generics;
 
 public class Pair<K,V> {
 
-    K first;
-    V second;
+    private K first;
+    private V second;
 
     public Pair(K first, V second){
         this.first = first;
@@ -14,15 +14,15 @@ public class Pair<K,V> {
         return first;
     }
 
+    public void setSecond(V second) {
+        this.second = second;
+    }
+
     public V getSecond() {
         return second;
     }
 
     public void setFirst(K first) {
         this.first = first;
-    }
-
-    public void setSecond(V second) {
-        this.second = second;
     }
 }
