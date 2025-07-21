@@ -1,38 +1,29 @@
 package oop.phonebook;
 
+import java.util.Arrays;
 
-public class PhoneBookArray  implements PhoneBook{
+public class PhoneBookArray implements PhoneBook {
 
-    private final Person[] phoneBook;
+    final Person[] phoneBook;
 
-    public PhoneBookArray(Person[] phoneBook){
 
-        this.phoneBook = new Person[MAX_PERSON];
+    public PhoneBookArray() {
+        phoneBook = new Person[MAX_PERSONS];
     }
 
+
     @Override
-    public boolean addPerson(Person p){
-        for(int i = 0; i < MAX_PERSON; i++){
-            if(phoneBook[i].equals(p)){
+    public boolean addPerson(Person p) {
+
+        for (int i = 0; i < MAX_PERSONS; i++) {
+            if (phoneBook[i] != null && phoneBook[i].equals(p)) {
                 return false;
             }
         }
 
-        for(int i = 0; i < MAX_PERSON; i++){
+        for(int i = 0 ; i < phoneBook.length; i++){
             if(phoneBook[i] == null){
                 phoneBook[i] = p;
-            }
-
-        }
-
-        return true;
-    }
-
-    @Override
-    public boolean removePerson(Person p) {
-        for(int i = 0; i < MAX_PERSON; i++){
-            if(phoneBook[i].equals(p)){
-                phoneBook[i] = null;
                 return true;
             }
         }
@@ -40,34 +31,37 @@ public class PhoneBookArray  implements PhoneBook{
     }
 
     @Override
+    public boolean removePerson(Person p) {
+       for(int i = 0 ; i < MAX_PERSONS; i++){
+           if(phoneBook[i] != null && phoneBook[i].equals(p)){
+               phoneBook[i] = null;
+               return true;
+           }
+       }
+       return false;
+    }
+
+    @Override
     public Person[] searchByLastname(String lastname) {
-        System.out.println("La ricerca per cognome " + "(" + lastname + ")" +" ha restituito: ");
-        Person[] find = new Person[MAX_PERSON];
-        int j = 0;
-        for(Person p : phoneBook){
-            if(p.getLastname().equals(lastname)){
-                System.out.println("- " + p.toString());
-                find[j] = p;
-                j++;
-            }
-        }
-        return find;
+        int k = 0;
+        Person[] trovati = new Person[MAX_PERSONS];
+       for(int i = 0; i < MAX_PERSONS; i++){
+           if(phoneBook[i] != null && phoneBook[i].getLastname().equals(lastname)){
+               trovati[k++] = phoneBook[i];
+           }
+       }
+        return Arrays.copyOf(trovati,k);
     }
 
     @Override
     public Person[] searchByNameAndLastname(String name, String lastname) {
-        System.out.println("La ricerca per nome e cognome " + "(" + name + "," + lastname + ")" +" ha restituito: ");
-        Person[] find = new Person[MAX_PERSON];
-        int j = 0;
-        for(Person p : phoneBook){
-            if(p.getLastname().equals(lastname) && p.getName().equals(name)){
-                System.out.println("- " + p.toString());
-                find[j] = p;
-                j++;
+        int k = 0;
+        Person[] trovati = new Person[MAX_PERSONS];
+        for(int i = 0; i < MAX_PERSONS; i++){
+            if(phoneBook[i] != null  && phoneBook[i].getName().equals(name) && phoneBook[i].getLastname().equals(lastname)){
+                trovati[k++] = phoneBook[i];
             }
         }
-        return find;
+        return Arrays.copyOf(trovati,k);
     }
-
-
 }

@@ -1,53 +1,33 @@
 package oop.phonebook;
 
 import java.util.ArrayList;
-import java.util.Map;
+import java.util.Objects;
 
-public class PhoneBookList implements PhoneBook {
+public class PhoneBookList implements PhoneBook{
 
-    private final ArrayList<Person> phonebook;
+    private final ArrayList<Person> phoneBook;
 
-    public PhoneBookList(){
-        this.phonebook = new ArrayList<Person>();
+    public PhoneBookList() {
+        phoneBook = new ArrayList<>(MAX_PERSONS);
     }
 
-
-
-    @Override
-    public boolean addPerson(Person p) {
-       if(phonebook.contains(p) || phonebook.size() >= MAX_PERSON){
-           return false;
-       }
-       phonebook.add(p);
-       return true;
-    }
-
-    @Override
-    public boolean removePerson(Person p) {
-        if(!phonebook.contains(p)) return false;
-        phonebook.remove(p);
+    public boolean addPerson(Person p ) {
+        if(phoneBook.size() == MAX_PERSONS) return false;
+        phoneBook.add(p);
         return true;
     }
-
-    @Override
-    public Person[] searchByLastname(String lastname) {
-        ArrayList<Person> tmp = new ArrayList<>();
-        for (Person p : phonebook) {
-            if (p.getLastname().equals(lastname)) {
-                tmp.add(p);
-            }
-        }
-        return tmp.toArray(new Person[]{});
+    public boolean removePerson(Person p){
+        if(phoneBook.isEmpty()) return false;
+        phoneBook.remove(p);
+        return true;
+    }
+    public Person[] searchByLastname(String lastname ) {
+        Person[] trovati = new Person[phoneBook.size()];
+        return phoneBook.stream().filter(s -> Objects.equals(s.getLastname(), lastname)).toList().toArray(trovati);
+    }
+    public Person[] searchByNameAndLastname(String lastname, String name){
+        Person[] trovati = new Person[phoneBook.size()];
+        return phoneBook.stream().filter(s -> Objects.equals(s.getLastname(), lastname) && Objects.equals(s.getName(),name)).toList().toArray(trovati);
     }
 
-    @Override
-    public Person[] searchByNameAndLastname(String name, String lastname) {
-        ArrayList<Person> tmp = new ArrayList<>();
-        for (Person p : phonebook) {
-            if (p.getLastname().equals(lastname) && p.getName().equals(name)) {
-                tmp.add(p);
-            }
-        }
-        return tmp.toArray(new Person[]{});
-    }
 }

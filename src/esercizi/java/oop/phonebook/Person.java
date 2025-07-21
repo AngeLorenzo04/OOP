@@ -3,18 +3,17 @@ package oop.phonebook;
 import java.util.Objects;
 
 public class Person {
-
     private String name;
     private String lastname;
     private String phone;
 
-    public Person(String name, String lastname, String phone){
+    public Person(String name, String lastname, String phone) {
         this.name = name;
         this.lastname = lastname;
-        this.phone = phone;
+        this.phone  = phone;
     }
 
-    public String getLastname() {
+    public String getLastname(){
         return lastname;
     }
 
@@ -26,12 +25,12 @@ public class Person {
         return phone;
     }
 
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
-    }
-
     public void setName(String name) {
         this.name = name;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
     }
 
     public void setPhone(String phone) {
@@ -39,26 +38,29 @@ public class Person {
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if(this == obj){
+    public boolean equals(Object o){
+        if(o == this){
             return true;
         }
-        if(getClass() != obj.getClass()){
+
+        if(o.getClass() != getClass()){
             return false;
         }
 
-        return( Objects.equals(((Person) obj).name, this.name) &&
-                Objects.equals(((Person) obj).lastname, this.lastname) &&
-                Objects.equals(((Person) obj).phone, this.phone) );
+        return Objects.equals(((Person) o).lastname, this.lastname) &&
+                Objects.equals(((Person) o).name, this.name) &&
+                Objects.equals(((Person) o).phone, this.phone);
+    }
+
+
+    @Override
+    public int hashCode(){
+        return Objects.hash(lastname,name,phone);
     }
 
     @Override
-    public int hashCode() {
-        return Objects.hash(name, lastname, phone);
+    public String toString(){
+        return "Person{name="+name+", lastname="+lastname+", phone="+phone+"}";
     }
 
-    @Override
-    public String toString() {
-        return "Person{" + "name='" + name + '\'' + ", lastname='" + lastname + '\'' + ", phone='" + phone + '\'' + '}';
-    }
 }
