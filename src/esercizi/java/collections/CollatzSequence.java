@@ -6,30 +6,28 @@ import java.util.List;
 public class CollatzSequence {
 
     public static List<Long> collatzSequence(long n){
-
-        if(n < 1){
-            return new ArrayList<>();
-        }
         List<Long> out = new ArrayList<>();
-
+        if(n < 1){
+            return out;
+        }
         out.add(n);
-
-        while (n != 1){
-            if(n%2 == 0){
-                n =  n / 2;
-            }else n = n * 3 + 1;
-
-            out.add(n);
+        if(n == 1){
+            return out;
         }
 
+        long tmp = out.getLast();
+        while (tmp != 1){
+
+            if(tmp %2 == 0){
+                out.add(tmp/2);
+            }else{
+                out.add(tmp * 3 + 1);
+            }
+            tmp = out.getLast();
+
+        }
         return out;
-    }
 
-    public static void main(String[] args) {
-        List<Long> list  = collatzSequence(2);
-        for(Long e : list){
-            System.out.println(Long.toString(e));
-        }
     }
 
 }
