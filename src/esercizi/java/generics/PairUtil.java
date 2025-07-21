@@ -1,9 +1,14 @@
 package generics;
 
-public class PairUtil {
+public class PairUtil <K,V>{
 
     public static <K, V> Pair<V, K> swap(Pair<K, V> src){
-        return new Pair<>(src.getSecond(), src.getFirst());
+
+        Pair<V,K> out = new Pair<>(null,null);
+        out.setSecond(src.getFirst());
+        out.setFirst(src.getSecond());
+        return out;
+
     }
 
 }
